@@ -53,12 +53,24 @@
                 </headerToolbar>
 
                 <columns>
-                    <Column id="nameColumn">
-                        <Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+                    <Column id="IdParceiro">
+                        <Text text="{i18n>tableColumnIdParceiro}" id="txtIdParceiro"/>
                     </Column>
-                    <Column id="unitNumberColumn" hAlign="End">
+                    <Column id="NomeParceiro">
+                        <Text text="{i18n>tableNameColumnNomeParceiro}" id="txtNomeParceiro"/>
+                    </Column>
+                    <Column id="TipoParceiro">
+                        <Text text="{i18n>tableNameColumnTipoParceiro}" id="txtTipoParceiro"/>
+                    </Column>
+                    <Column id="Regiao">
+                     <Text text="{i18n>tableNameColumnRegiao}" id="txtRegiao"/>
+                    </Column>
+                    <Column id="Pais">
+                        <Text text="{i18n>tableNameColumnCountry}" id="txtpais"/>
+                    </Column>
+                    <!--Column id="unitNumberColumn" hAlign="End">
                         <Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
-                    </Column>
+                    </Column-->
                 </columns>
 
                 <items>
@@ -68,7 +80,11 @@
                         <cells>
                             <ObjectIdentifier
                                 title="{PartnerId}"/>
-                            <ObjectNumber />
+                                <Text text= "{PartnerName2}{PartnerName1}"/>
+                                <Text text= "{PartnerType}"/>
+                                <Text text= "{Region}"/>
+                                <Text text= "{Country}"/>
+                            <!--ObjectNumber /-->
                         </cells>
                     </ColumnListItem>
                 </items>
