@@ -49,6 +49,9 @@
                                     priority="NeverOverflow"/>
                             </layoutData>
                         </SearchField>
+        
+                        <Button id="buttonCreate" icon="sap-icon://add" text="{i18n>btnCreate}" type="Emphasized" press="onCreatePress" />
+                   
                     </OverflowToolbar>
                 </headerToolbar>
 
@@ -56,18 +59,24 @@
                     <Column id="IdParceiro">
                         <Text text="{i18n>tableColumnIdParceiro}" id="txtIdParceiro"/>
                     </Column>
-                    <Column id="NomeParceiro">
-                        <Text text="{i18n>tableNameColumnNomeParceiro}" id="txtNomeParceiro"/>
+                    <Column> 
+                        <Text text="{i18n>txtPartnerType}"/> 
+                    </Column> 
+                    <Column> 
+                        <Text text="{i18n>txtRegion}"/> 
+                    </Column> 
+                    <Column> 
+                        <Text text="{i18n>txtCountry}"/> 
                     </Column>
-                    <Column id="TipoParceiro">
+                    <!--Column id="TipoParceiro">
                         <Text text="{i18n>tableNameColumnTipoParceiro}" id="txtTipoParceiro"/>
-                    </Column>
-                    <Column id="Regiao">
+                    </Column-->
+                    <!--Column id="Regiao">
                      <Text text="{i18n>tableNameColumnRegiao}" id="txtRegiao"/>
-                    </Column>
-                    <Column id="Pais">
+                    </Column-->
+                    <!--Column id="Pais">
                         <Text text="{i18n>tableNameColumnCountry}" id="txtpais"/>
-                    </Column>
+                    </Column-->
                     <!--Column id="unitNumberColumn" hAlign="End">
                         <Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
                     </Column-->
@@ -79,9 +88,8 @@
                         press=".onPress">
                         <cells>
                             <ObjectIdentifier
-                                title="{PartnerId}"/>
-                                <Text text= "{PartnerName2}{PartnerName1}"/>
-                                <Text text= "{PartnerType}"/>
+                                title="{PartnerId}" text= "{PartnerName2}{PartnerName1}"/>
+                                <Text text="{path: 'PartnerType', formatter: '.formatter.formatPartnerType'}" /> 
                                 <Text text= "{Region}"/>
                                 <Text text= "{Country}"/>
                             <!--ObjectNumber /-->
