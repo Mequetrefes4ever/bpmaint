@@ -30,6 +30,8 @@ sap.ui.define([
             });
             this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
             this.setModel(oViewModel, "objectView");
+
+            this.carregaTipo();
         },
         /* =========================================================== */
         /* event handlers                                              */
@@ -51,21 +53,24 @@ sap.ui.define([
                 this.getRouter().navTo("worklist", {}, true);
             }
         },
+        
         onEditPress: function () {
             this._changeEditStatus()
         },
+
         onCancelPress: function () {
-            this._changeEditStatus();
+            //this._changeEditStatus();
+            this._onNavBack(undefined);
         },
 
         onSavePress: function () {
             var that = this;
-            //let oJson = this.getView().getBindingContext().getObject();
             let oModel = this.getOwnerComponent().getModel();
-
+ 
             let oJson = {
                 PartnerId: this.getView().getBindingContext().getObject().PartnerId,
-                PartnerType: this.byId("txtPartnerType").getValue(),
+                //PartnerType: this.byId("txtPartnerType").getValue(),
+                PartnerType: this.byId("cbTipo").getSelectedKey(),
                 PartnerName1: this.byId("txtPartnerName1").getValue(),
                 PartnerName2: this.byId("txtPartnerName2").getValue(),
                 SearchTerm1: this.byId("txtSearchTerm1").getValue(),
@@ -78,7 +83,7 @@ sap.ui.define([
                 ZipCode: this.byId("txtZipCode").getValue(),
                 Country: this.byId("txtCountry").getValue()
             }
-
+ 
             oModel.update("/BusinessPartnerSet('" + oJson.PartnerId + "')", oJson, {
                 success: (oData) => {
                     MessageBox.success(that.getText("msgBPUpdated"), {
@@ -94,6 +99,7 @@ sap.ui.define([
                     });
                 }
             });
+ 
         },
         /* =========================================================== */
         /* internal methods                                            */
@@ -161,7 +167,21 @@ sap.ui.define([
             let bEdit = oViewModel.getProperty("/edit");
 
             oViewModel.setProperty("/edit", !bEdit);
+        },
+        carregaTipo: function(){
+            let cbTipo = this.byId("cbTipo");
+ 
+            cbTipo.addItem(new sap.ui.core.Item({
+                key: 1,
+                text: this.getResourceBundle().getText("txtOrganization")
+            }));
+ 
+            cbTipo.addItem(new sap.ui.core.Item({
+                key: 2,
+                text: this.getResourceBundle().getText("txtPerson")
+            }));
         }
+
     });
 
 });

@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/UIComponent",
-    "sap/m/library"
-], function (Controller, UIComponent, mobileLibrary) {
+    "sap/m/library",
+    "sap/ui/core/routing/History"
+], function (Controller, UIComponent, mobileLibrary, History) {
     "use strict";
 
     // shortcut for sap.m.URLHelper
